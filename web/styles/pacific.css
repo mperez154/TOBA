@@ -1,0 +1,164 @@
+header, nav, main, footer { display: block; }
+body { background-color: #FFCC33;
+      
+      color: #666666;
+	  font-family: Verdana, Arial, sans-serif;
+}
+#wrapper { width: 80%;
+           min-width: 700px;
+		   max-width: 1024px;
+           margin-right: auto;
+		   margin-left: auto;
+		   background-color: #cccccc;
+		   box-shadow: 3px 3px 3px #666666;
+}
+header { background-color: #000000;
+       color: #FFFFFF;
+	   font-family: Georgia, serif;
+}
+h1 { line-height: 200%;
+    background-image: url(sunset.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-left: 20px; 
+	height: 72px;
+	margin-bottom: 0;
+}
+nav { font-weight: bold;
+	 padding: 5px;
+	 float:left;
+	 width: 160px;
+	 padding: 20px 5px 0 20px;
+}
+nav a { text-decoration: none; }
+nav a:link { color: #000000; }
+nav a:visited { color: #333333 }
+nav a:hover { color: #FFFFFF; }
+nav ul { list-style-type: none;
+       margin: 0;
+       padding-left: 0; 
+}
+h2 { color: #FFCC33;
+    font-family: Georgia, serif;
+}
+dt { color: #000033;
+    font-weight: bold; 
+}
+.resort { color: #000000;
+          font-size: 1.2em;
+}
+footer { font-size: 0.70em;
+       text-align: center;
+	   font-style: italic;
+	   padding: 10px;
+	   margin-left: 170px;
+	   background-color: #FFFFFF;
+}
+h3 { color: #000033; 
+}
+main { padding-left: 20px;
+        padding-right: 20px;
+		background-color: #FFFFFF;
+		margin-left: 170px;
+		padding-top: 1px;
+		padding-bottom: 1px;
+}
+main img { float: left;
+           padding-right: 20px;
+		   padding-bottom: 20px;
+}
+main ul { list-style-position: inside; }
+.clear { clear: both; }
+#mobile { display: none; }
+#desktop { display: inline; }
+
+/**************************
+*****NEW FOR CHAPTER 8*****
+***************************/
+
+table
+{
+	margin: auto;
+	width: 90%;
+	border: 1px solid #3399CC;
+	border-collapse: collapse;
+	
+}
+
+td, th
+{
+	padding: 5px;
+	border: 1px solid #3399CC;
+}
+
+td
+{
+	text-align: center;
+	
+}
+
+
+
+.text
+{
+	text-align: left;
+}
+
+tr:nth-of-type(even)
+{
+	background-color: #90C7E3;
+}
+
+/**************************
+*******END CHAPTER 8*******
+***************************/
+
+/**************************
+*****NEW FOR CHAPTER 9*****
+***************************/
+label
+{
+	float: left;
+	display: block;
+	width: 8em;
+	padding-right: 5px;
+}
+
+input, textarea
+{
+	display: block;
+	margin-bottom: 1em;
+}
+
+#mySubmit
+{
+	margin-left: 10em;
+}
+
+/**************************
+*******END CHAPTER 9*******
+***************************/
+
+@media only screen and (max-width: 1024px) {
+  body { margin: 0; padding: 0; background-image: none; }
+  #wrapper { width: auto; min-width: 0; margin: 0; box-shadow: none; }
+  h1 { margin: 0; }
+  nav { float: none; width: auto; padding: 0.5em; }
+  nav li { display: inline-block; }
+  nav a { padding: 1em; }
+  main { padding: 1em; margin-left: 0; font-size: 90%; }
+  footer { margin: 0; }
+}
+@media only screen and (max-width: 768px) {
+  h1 { height: 100%; font-size: 1.5em; padding-left: 0.3em; }
+  nav { padding: 0; }
+  nav a { display: block; padding: 0.2em; font-size: 1.3em; border-bottom: 1px solid #330000; }
+  nav ul, nav li { margin: 0; padding: 0; }
+  nav li { display: block; }
+  main { padding: 0.1em 0 0.1em 0.4em; }
+  main img { display: none; padding-right: 0; }
+  main ul { list-style-position: outside; }
+  footer { padding: 0; }
+  #mobile { display: inline; }
+  #desktop { display: none; }
+}
