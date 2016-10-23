@@ -18,6 +18,25 @@
         <![endif]-->
     </head>
     <body>
-        <h1>404 Error: Page not found</h1>
+        <div id="wrapper">
+<header><h1>Titan Online Banking Application</h1></header>
+<nav>
+<ul>
+ <li><a href="index.html">Home</a></li>
+  <li><a href="login.html">Login</a></li>
+  <li><a href="new_customer.html">Register</a></li>
+</ul>
+</nav>
+<main>
+<h2>404 Error</h2>
+
+<p>The server was not able to find the file you requested.</p>
+<p>To continue, click the back back button.</p>
+
+</main>
+<footer>Copyright &copy; 2014 Titan Online Banking<br>
+<a href="mailto:mperez40@live.spcollege.edu">mperez40@live.spcollege.edu</a>
+</footer>
+</div>
     </body>
 </html>

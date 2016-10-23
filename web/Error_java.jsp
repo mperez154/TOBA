@@ -18,6 +18,29 @@
         <![endif]-->
     </head>
     <body>
-        <h1>Java Error: Java code issue</h1>
+       <div id="wrapper">
+<header><h1>Titan Online Banking Application</h1></header>
+<nav>
+<ul>
+ <li><a href="index.html">Home</a></li>
+  <li><a href="login.html">Login</a></li>
+  <li><a href="new_customer.html">Register</a></li>
+</ul>
+</nav>
+<main>
+<h2>Java Error</h2>
+
+<p>Sorry, Java has thrown an exception.</p>
+<p>To continue, click the back back button.</p>
+
+<h3>Details</h3>
+<p>Type: {pageContext.exception["class"]}</p>
+<p>Message: {pageContext.exception.message}</p>
+
+</main>
+<footer>Copyright &copy; 2014 Titan Online Banking<br>
+<a href="mailto:mperez40@live.spcollege.edu">mperez40@live.spcollege.edu</a>
+</footer>
+</div>
     </body>
 </html>
