@@ -22,9 +22,9 @@
 <header><h1>Titan Online Banking Application</h1></header>
 <nav>
 <ul>
- <li><a href="index.html">Home</a></li>
+  <li><a href="index.html">Home</a></li>
   <li><a href="login.html">Login</a></li>
-  <li><a href="new_customer.html">Register</a></li>
+  <li><a href="new_customer.jsp">Register</a></li>
 </ul>
 </nav>
 <main>

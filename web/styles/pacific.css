@@ -4,6 +4,8 @@ body { background-color: #FFCC33;
       color: #666666;
 	  font-family: Verdana, Arial, sans-serif;
 }
+#errorMessage{ color: red}
+
 #wrapper { width: 80%;
            min-width: 700px;
 		   max-width: 1024px;
