@@ -2,21 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/includes/header.html" />
 
-
 <div id="wrapper">
 <header><h1>Titan Online Banking Application</h1></header>
 
 <c:import url="/includes/navigation.html" />
 
+
 <main>
-<h2>Java Error</h2>
+<h2>Login Failure!</h2>
 
-<p>Sorry, Java has thrown an exception.</p>
-<p>To continue, click the back back button.</p>
-
-<h3>Details</h3>
-<p>Type: {pageContext.exception["class"]}</p>
-<p>Message: {pageContext.exception.message}</p>
+<p>The login username or password is incorrect. Please click back to try again. Note that 3 failed logins will lock the account.</p>
 
 </main>
 <c:import url="/includes/footer.jsp" />
