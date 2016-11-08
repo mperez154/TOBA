@@ -10,8 +10,17 @@
 
 <main>
 <h2>Success!</h2>
-<p>Your account has been created. Please click on the Login link in the menu to login to the site.</p>
-
+<p>Thank you ${user.firstName}, your account has been created. Please save your account details below and click on the Login link to login to the site.</p>
+<span>${user.firstName}</span>
+<span>${user.lastName}<br></span>
+<span>${user.email}<br></span>
+<span>${user.phone}<br></span>
+<span>${user.address}<br></span>
+<span>${user.city},</span>
+<span>${user.state},</span>
+<span>${user.zip}<br><br></span>
+<span>Username: ${user.userName}<br></span>
+<span>Password: ${user.password}</span>
 
 
 </main>

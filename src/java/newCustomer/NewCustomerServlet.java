@@ -1,5 +1,6 @@
 package newCustomer;
 
+import User.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +44,7 @@ public class NewCustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url = "/Success.html";
+        String url = "/Success.jsp";
         
         String fName = request.getParameter("myFName");
         String lName = request.getParameter("myLName");
@@ -53,8 +54,14 @@ public class NewCustomerServlet extends HttpServlet {
         String city = request.getParameter("city");
         String state = request.getParameter("state");
         String zip = request.getParameter("zip");
+        String userName = request.getParameter("myLName") + request.getParameter("zip");
+        String password = "welcome1";
         
         String message = "";
+        
+        //Creating a user object
+        User user = new User(fName, lName, eMail, phone, address, city, state, zip, userName, password);
+        request.setAttribute("user", user);
         
         if(fName == null || fName.isEmpty() || lName == null || lName.isEmpty() || eMail == null || eMail.isEmpty()
                 || phone == null || phone.isEmpty() || address == null || address.isEmpty() || city == null

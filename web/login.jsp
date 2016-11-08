@@ -12,12 +12,15 @@
 <main>
 <h2>Login</h2>
 <form method="post" action="Account_activity">
-<label for="userName">Username:</label><input type="text" name="userName" id="userName" required="required">
-<label for="password">Password:</label><input type="password" name="password" id="password" required="required">
+<label for="userName">Username:</label><input type="text" name="userName" id="userName" value="${userName}" required="required">
+<label for="password">Password:</label><input type="password" name="password" value="${password}" id="password" required="required">
 <label><input type="submit" id="mySubmit" name="submit" value="Login"></label>
-</form><br>
+</form>
+<br><br>
+<a href="passwordReset.jsp">Reset</a>
+<br>
 
-<p>A variety of luxury yurt packages are available. Choose a package below and contact us to begin your reservation. We're happy to build a custom package just for you!</p>
+<p>If you are unable to login, click <a href="passwordReset.jsp">reset password</a> or click the reset button below.</p>
 
 </main>
 <c:import url="/includes/footer.jsp" />
