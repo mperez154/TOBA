@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,6 +45,9 @@ public class NewCustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        //Getting/Creating a session
+        HttpSession session = request.getSession();
+        
         String url = "/Success.jsp";
         
         String fName = request.getParameter("myFName");
@@ -61,7 +65,7 @@ public class NewCustomerServlet extends HttpServlet {
         
         //Creating a user object
         User user = new User(fName, lName, eMail, phone, address, city, state, zip, userName, password);
-        request.setAttribute("user", user);
+        session.setAttribute("user", user);
         
         if(fName == null || fName.isEmpty() || lName == null || lName.isEmpty() || eMail == null || eMail.isEmpty()
                 || phone == null || phone.isEmpty() || address == null || address.isEmpty() || city == null
