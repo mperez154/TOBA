@@ -13,7 +13,7 @@
 <p><span class="resort">Titan Banks</span> online service offers a modern banking experience on our Hi-Tech application developed in house.
   Login or create an online profile today to start using the Titan Online Banking Application.</p>
 <p id="errorMessage"><i>${message}</i></p>
-<form method="post" action="changePassword">
+<form method="post" action="ChangePassword">
 <input type="hidden" name="myFName" id="myFName" value="${fName}">
 <input type="hidden" name="myLName" id="myLName" value="${lName}" >
 <input type="hidden" name="myEmail" value="${eMail}" id="myEmail" >

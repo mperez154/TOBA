@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
-                        http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <!--SERVLET DEFINITIONS-->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -12,6 +9,10 @@
         <servlet-name>NewCustomerServlet</servlet-name>
         <servlet-class>newCustomer.NewCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>ChangePassword.ChangePasswordServlet</servlet-class>
+    </servlet>
     <!--SERVLET MAPPINGS-->
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -20,6 +21,10 @@
     <servlet-mapping>
         <servlet-name>NewCustomerServlet</servlet-name>
         <url-pattern>/Sign_up</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
     <!--WELCOME FILE LIST-->
     <welcome-file-list>
@@ -35,4 +40,3 @@
         <location>/Error_java.jsp</location>
     </error-page>
 </web-app>
-

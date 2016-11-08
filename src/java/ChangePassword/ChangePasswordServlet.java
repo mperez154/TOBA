@@ -1,5 +1,6 @@
-package User;
+package ChangePassword;
 
+import User.User;
 import User.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -42,7 +43,7 @@ public class ChangePasswordServlet extends HttpServlet {
         
         User user = new User(fName, lName, eMail, phone, address, city, state, zip, userName, password);
         request.setAttribute("user", user);
-        user.setPassword(password);
+        //user.setPassword(password);
         
         
         if(userName.isEmpty() || password.isEmpty())
