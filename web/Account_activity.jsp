@@ -9,6 +9,10 @@
 
 <main>
 <h2>Account Activity</h2>
+<!-- Displaying welcome message if user is logged in-->
+<c:if test="${user != null}">
+    <p><i>Welcome, ${user.firstName} ${user.lastName}</i></p>
+</c:if>
 <img src="styles/bank.jpg" alt="bank vault" width="320" height="250">
 <p><span class="resort">Titan Banks</span> online service offers a modern banking experience on our Hi-Tech application developed in house.
   This is a place holder for the Account Activity Page.</p>
