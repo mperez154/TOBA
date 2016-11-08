@@ -38,6 +38,13 @@ public class User implements Serializable{
         password = "";
               
     }
+    
+    public User(String userName, String password)
+    {
+        this.userName = userName;
+        this.password = password;     
+    }
+    
     public User(String firstName, String lastName, String email, String phone, String address, String city, String state, String zip, String userName, String password){
         this.firstName = firstName;
         this.lastName = lastName;

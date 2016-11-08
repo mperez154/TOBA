@@ -12,6 +12,10 @@
         <servlet-name>NewCustomerServlet</servlet-name>
         <servlet-class>newCustomer.NewCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>User.ChangePasswordServlet</servlet-class>
+    </servlet>
     <!--SERVLET MAPPINGS-->
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -20,6 +24,10 @@
     <servlet-mapping>
         <servlet-name>NewCustomerServlet</servlet-name>
         <url-pattern>/Sign_up</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
     <!--WELCOME FILE LIST-->
     <welcome-file-list>
