@@ -11,7 +11,7 @@
             
 <main>
 <h2>Login</h2>
-<form method="post" action="Account_activity.jsp">
+<form method="post" action="Account_activity">
 <label for="userName">Username:</label><input type="text" name="userName" id="userName" value="${userName}" required="required">
 <label for="password">Password:</label><input type="password" name="password" value="${password}" id="password" required="required">
 <label><input type="submit" id="mySubmit" name="submit" value="Login"></label>
