@@ -58,14 +58,10 @@ public class NewCustomerServlet extends HttpServlet {
         String city = request.getParameter("city");
         String state = request.getParameter("state");
         String zip = request.getParameter("zip");
-        String userName = request.getParameter("myLName") + request.getParameter("zip");
+        String userName = lName + zip;
         String password = "welcome1";
         
         String message = "";
-        
-        //Creating a user object
-        User user = new User(fName, lName, eMail, phone, address, city, state, zip, userName, password);
-        session.setAttribute("user", user);
         
         if(fName == null || fName.isEmpty() || lName == null || lName.isEmpty() || eMail == null || eMail.isEmpty()
                 || phone == null || phone.isEmpty() || address == null || address.isEmpty() || city == null
@@ -75,6 +71,10 @@ public class NewCustomerServlet extends HttpServlet {
             message = "Please fill in all fields";
             url = "/new_customer.jsp";   
         }
+        
+        //Creating a user object
+        User user = new User(fName, lName, eMail, phone, address, city, state, zip, userName, password);
+        session.setAttribute("user", user);
         
         request.setAttribute("message", message);
         request.setAttribute("fName", fName);

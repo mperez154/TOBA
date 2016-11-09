@@ -23,6 +23,9 @@ public class ChangePasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String url = "/Account_activity.jsp";
+        String message = "";
+        
         //Getting a session
         HttpSession session = request.getSession();
         //Getting user from session
@@ -30,34 +33,31 @@ public class ChangePasswordServlet extends HttpServlet {
         //If user doesn't exist, create one
         if(user == null)
         {
-            user = new User();       
+            url = "/new_customer.jsp"; 
         }
-        
-        String url = "/Account_activity.jsp";
              
-        //Get the username and password from the form
-        String userName = request.getParameter("userName");
+        //Get password from the form
         String password = request.getParameter("password");
-        
-        //Change the password on the user object
-        user.setPassword(password);
-        
-        String message = "";
-        
+   
         //Will redirect back to reset password page if any fields are blank
-        if(userName.isEmpty() || password.isEmpty())
+        if(password.isEmpty())
         {
             //Direct back to form if any fields are blank.
             message = "Please fill in all fields";
             url = "/passwordReset.jsp";   
         }
         
+        //Change the password on the user object
+        if(user != null)
+        {
+            user.setPassword(password);
+        }
+        
         //Error message to be displayed if needed
         request.setAttribute("message", message);
 
-        //Setting session attributes
-        session.setAttribute("userName", userName);
-        session.setAttribute("password", password);
+        //Setting user object again w/ the new password
+        session.setAttribute("user", user);
         
         getServletContext()
             .getRequestDispatcher(url)

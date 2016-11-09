@@ -14,14 +14,6 @@
   Login or create an online profile today to start using the Titan Online Banking Application.</p>
 <p id="errorMessage"><i>${message}</i></p>
 <form method="post" action="ChangePassword">
-<input type="hidden" name="myFName" id="myFName" value="${fName}">
-<input type="hidden" name="myLName" id="myLName" value="${lName}" >
-<input type="hidden" name="myEmail" value="${eMail}" id="myEmail" >
-<input type="hidden" value="${phone}" name="myPhone" id="myPhone">
-<input type="hidden" name="address" id="address" value="${address}" ></textarea>
-<input name="city" value="${city}" id="city" type="hidden">
-<input name="state" value="${state}" id="state" type="hidden">
-<input name="zip" value="${zip}" id="zip" type="hidden">
 <label for="userName">User Name:</label><input type="text" name="userName" id="userName" value="${userName}">
 <label for="password">New Password:</label><input type="text" name="password" id="myLName" value="${password}" >
 <label><input type="submit" id="mySubmit" name="submit" value="Change"></label>

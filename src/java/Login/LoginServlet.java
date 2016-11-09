@@ -1,11 +1,13 @@
 package Login;
 
+import User.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,21 +43,32 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+                
+        String url = "/Account_activity.jsp";
         
-        String url = "/login.html";
-        
+        //Getting a session
+        HttpSession session = request.getSession();
+        //Getting user from session
+        User user = (User) session.getAttribute("user");
+        //If user doesn't exist, create one
+        if(user == null)
+        {
+            url = "/new_customer.jsp"; 
+        }
+             
+         //Get password from the form        
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         
-        if("jsmith@toba.com".equals(userName) && "letmein".equals(password))
+        if(user != null && userName.equals(user.getUserName()) && password.equals(user.getPassword()))
         {
             //Direct to account activity page if username and password are correct...
-            url = "/Account_activity.html";   
+            url = "/Account_activity.jsp";   
         }
         else
         {
             //Direct to login_failure page if either username or password is incorrect
-            url = "/Login_failure.html";          
+            url = "/Login_failure.jsp";          
         }
         
         getServletContext()
