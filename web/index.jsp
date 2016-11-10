@@ -19,13 +19,7 @@
   <li>Request new debit cards</li>
   <li>Dispute a charge with ease</li>
 </ul>
-  <div class="clear">Titan Bank<br>
-        5555 Limerick Drive<br>
-        Tampa, FL &nbsp;33610<br>
-  <br> 
-  <a id="mobile" href="tel:888-555-5555">888-555-5555</a> <span id="desktop">888-555-5555</span>
-  <br>
-  <br>
+  <div class="clear">
   </div>
 </main>
 <c:import url="/includes/footer.jsp" />

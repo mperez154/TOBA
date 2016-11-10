@@ -82,7 +82,7 @@ table
 {
 	margin: auto;
 	width: 90%;
-	border: 1px solid #3399CC;
+	border: 1px solid #FFCC33;
 	border-collapse: collapse;
 	
 }
@@ -90,12 +90,14 @@ table
 td, th
 {
 	padding: 5px;
-	border: 1px solid #3399CC;
+        padding-left: 10px;
+	border: 1px solid #FFCC33;
+        text-align: left;
 }
 
 td
 {
-	text-align: center;
+	text-align: left;
 	
 }
 
@@ -108,7 +110,7 @@ td
 
 tr:nth-of-type(even)
 {
-	background-color: #90C7E3;
+	background-color: #ffffb3;
 }
 
 /**************************
