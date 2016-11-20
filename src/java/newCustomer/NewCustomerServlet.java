@@ -1,5 +1,7 @@
 package newCustomer;
 
+import Account.Account;
+import Data.AccountDB;
 import User.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -79,9 +81,13 @@ public class NewCustomerServlet extends HttpServlet {
             url = "/index.jsp";
         }
         else {
-            message = "";
+            message = ""; 
             url = "/Success.jsp";
             UserDB.insert(user);
+            //Annonomoysly creating two new accounts
+            AccountDB.insert(new Account(10.00, "Checking", userName));
+            AccountDB.insert(new Account(25.00, "Savings", userName));
+            
         }
         
         session.setAttribute("user", user);

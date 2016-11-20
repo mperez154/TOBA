@@ -1,19 +1,29 @@
 package Account;
 
-import User.User;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Account {
+@Entity
+public class Account implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     private String type;    //Checking or Savings
     private double balance; //Balance
-    private User user;      //To maintain a reference to the user class? 
+    private String userID;
     
     public Account(){
         type = "";
         balance = 0.00;
     }
     
-    public Account(User user, double initBalance){
+    public Account(double initBalance, String accountType, String userID){
         balance = initBalance;
+        type = accountType;
+        this.userID = userID;
         
     }
     
@@ -26,6 +36,15 @@ public class Account {
         balance = balance - charges;
     }
     
+    //Setter to set the account type
+    public void setType(String type) {
+        this.type = type;
+    }
+    
+    public void setBalance(double balance)
+    {
+        this.balance = balance;
+    }
     
     
     
