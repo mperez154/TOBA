@@ -1,5 +1,6 @@
 package ChangePassword;
 
+import Data.UserDB;
 import User.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -51,6 +52,7 @@ public class ChangePasswordServlet extends HttpServlet {
         if(user != null)
         {
             user.setPassword(password);
+            UserDB.update(user);
         }
         
         //Error message to be displayed if needed

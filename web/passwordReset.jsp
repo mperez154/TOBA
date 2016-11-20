@@ -10,21 +10,15 @@
 <main>
 <h2>Banking made easy, register today!</h2>
 <img src="styles/bank.jpg" alt="bank vault" width="320" height="250">
-<p><span class="resort">Titan Banks</span> online service offers a modern banking experience on our Hi-Tech application developed in house.
-  Login or create an online profile today to start using the Titan Online Banking Application.</p>
+<p><span class="resort">Titan Banks</span> online password reset tool allows you to change your password.
+  Simply enter you user ID and  your new password, then click the change button.</p>
 <p id="errorMessage"><i>${message}</i></p>
 <form method="post" action="ChangePassword">
 <label for="userName">User Name:</label><input type="text" name="userName" id="userName" value="${userName}">
 <label for="password">New Password:</label><input type="text" name="password" id="myLName" value="${password}" >
 <label><input type="submit" id="mySubmit" name="submit" value="Change"></label>
 </form>
-  <div class="clear">Titan Bank<br>
-        5555 Limerick Drive<br>
-        Tampa, FL &nbsp;33610<br>
-  <br> 
-  <a id="mobile" href="tel:888-555-5555">888-555-5555</a> <span id="desktop">888-555-5555</span>
-  <br>
-  <br>
+  <div class="clear">
   </div>
 </main>
 <c:import url="/includes/footer.jsp" />

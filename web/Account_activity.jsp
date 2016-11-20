@@ -18,22 +18,49 @@
         <p><i>Not logged in</i></p>
     </c:otherwise>
 </c:choose>
-<img src="styles/bank.jpg" alt="bank vault" width="320" height="250">
-<p><span class="resort">Titan Banks</span> online service offers a modern banking experience on our Hi-Tech application developed in house.
-  This is a place holder for the Account Activity Page.</p>
-<p>
-<span>First Name: ${user.firstName}<br></span>
+        
+        <table>
+            <tr>
+               <th>Description</th>
+               <th>Amount</th>
+               <th>Balance</th>
+            </tr>
+            <tr>
+                <td>McDonalds, Tampa</td>
+                <td>$7.99</td>
+                <td>$1099.99</td>
+            </tr>
+            <tr>
+                <td>Target, Brandon</td>
+                <td>$17.99</td>
+                <td>$1099.99</td>
+            </tr>
+            <tr>
+                <td>Home Depot, Tampa</td>
+                <td>$102.99</td>
+                <td>$1099.99</td>
+            </tr>
+            <tr>
+                <td>Publix, Tampa</td>
+                <td>$107.99</td>
+                <td>$1099.99</td>
+            </tr>
+            <tr>
+                <td>SPC, Clearwater</td>
+                <td>$745.55</td>
+                <td>$1099.99</td>
+            </tr>
+            
+        </table>
+        
+        <p><br>*Table above is a place holder until we get data<br></p>
+        <!--<span>First Name: ${user.firstName}<br></span>
 <span>Last Name: ${user.lastName}<br></span>
 <span>Email: ${user.email}<br></span>
 <span>Phone: ${user.phone}<br><br></span>
-</p>
-  <div class="clear">Titan Bank<br>
-        5555 Limerick Drive<br>
-        Tampa, FL &nbsp;33610<br>
-  <br> 
-  <a id="mobile" href="tel:888-555-5555">888-555-5555</a> <span id="desktop">888-555-5555</span>
-  <br>
-  <br>
+</p>-->
+  <div class="clear">
+  
   </div>
 </main>
 <c:import url="/includes/footer.jsp" />
