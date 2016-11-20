@@ -1,9 +1,18 @@
 package User;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class User implements Serializable{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)     
+    private String userName;
+    private String password;
     private String firstName;
     private String lastName;
     private String email;
@@ -11,19 +20,8 @@ public class User implements Serializable{
     private String address;
     private String city;
     private String state;
-    private String zip;
-    
-    private String userName;
-    private String password;
+    private String zip;  
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-    
     //Here is the no arg-constructor
     public User() {
         firstName = "";
@@ -37,12 +35,6 @@ public class User implements Serializable{
         userName = "";
         password = "";
               
-    }
-    
-    public User(String userName, String password)
-    {
-        this.userName = userName;
-        this.password = password;     
     }
     
     public User(String firstName, String lastName, String email, String phone, String address, String city, String state, String zip, String userName, String password){
@@ -59,6 +51,14 @@ public class User implements Serializable{
     }
 
     //Below are all the setters and getters for all variables
+     public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
     public String getFirstName() {
         return firstName;
     }
