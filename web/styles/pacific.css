@@ -74,9 +74,6 @@ main ul { list-style-position: inside; }
 #mobile { display: none; }
 #desktop { display: inline; }
 
-/**************************
-*****NEW FOR CHAPTER 8*****
-***************************/
 
 table
 {
@@ -113,13 +110,6 @@ tr:nth-of-type(even)
 	background-color: #ffffb3;
 }
 
-/**************************
-*******END CHAPTER 8*******
-***************************/
-
-/**************************
-*****NEW FOR CHAPTER 9*****
-***************************/
 label
 {
 	float: left;
@@ -138,10 +128,6 @@ input, textarea
 {
 	margin-left: 10em;
 }
-
-/**************************
-*******END CHAPTER 9*******
-***************************/
 
 @media only screen and (max-width: 1024px) {
   body { margin: 0; padding: 0; background-image: none; }

@@ -1,5 +1,7 @@
 package newCustomer;
 
+import Account.Account;
+import Data.AccountDB;
 import User.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,15 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Data.UserDB;
+
 /**
- *
  * @author Marco
  */
 @WebServlet(urlPatterns = {"/NewCustomerServlet"})
 public class NewCustomerServlet extends HttpServlet {   
     
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,7 +33,6 @@ public class NewCustomerServlet extends HttpServlet {
         doPost(request, response);
         
     }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -74,6 +74,22 @@ public class NewCustomerServlet extends HttpServlet {
         
         //Creating a user object
         User user = new User(fName, lName, eMail, phone, address, city, state, zip, userName, password);
+        
+        if(UserDB.emailExists(eMail)){
+            message="This email address already exists.<br>" +
+                    "Please enter another email address.";
+            url = "/index.jsp";
+        }
+        else {
+            message = ""; 
+            url = "/Success.jsp";
+            UserDB.insert(user);
+            //Annonomoysly creating two new accounts
+            AccountDB.insert(new Account(10.00, "Checking", userName));
+            AccountDB.insert(new Account(25.00, "Savings", userName));
+            
+        }
+        
         session.setAttribute("user", user);
         
         request.setAttribute("message", message);
@@ -88,7 +104,6 @@ public class NewCustomerServlet extends HttpServlet {
         
         getServletContext()
             .getRequestDispatcher(url)
-            .forward(request, response);
-        
+            .forward(request, response); 
     }
 }
