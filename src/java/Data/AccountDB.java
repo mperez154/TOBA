@@ -1,10 +1,14 @@
 package Data;
 
 import Account.Account;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import Data.DBUtil;
 
 public class AccountDB {
     
@@ -53,8 +57,8 @@ public class AccountDB {
             em.close();
         }
     }
-       
-    public static Account selectChecking(String userID, String checking)
+     
+     public static Account selectChecking(String userID, String checking)
     {
         //Create connection using the connection pool
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -79,7 +83,7 @@ public class AccountDB {
             em.close();
         }
     }
-    
+     
     public static Account selectSavings(String userID, String savings)
     {
         //Create connection using the connection pool

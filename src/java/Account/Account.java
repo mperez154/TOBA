@@ -14,7 +14,7 @@ public class Account implements Serializable {
     private String type;    //Checking or Savings
     private double balance; //Balance
     private String userID;
-    
+
     //No arg constructor
     public Account(){
         type = "";
@@ -59,4 +59,12 @@ public class Account implements Serializable {
     public double getBalance() {
         return balance;
     }  
+    
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 } 

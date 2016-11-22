@@ -17,12 +17,12 @@
                 <th>Balance</th>
             </tr>
             <tr>
-                <td>${account.type}</td>
-                <td>$${account.balance}0</td>
+                <td>${checking.type}</td>
+                <td>$${checking.balance}0</td>
             </tr>
             <tr>
-                <td>${account2.type}</td>
-                <td>$${account2.balance}0</td>
+                <td>${savings.type}</td>
+                <td>$${savings.balance}0</td>
             </tr>  
         </table>
             

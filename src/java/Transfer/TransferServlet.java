@@ -62,14 +62,7 @@ public class TransferServlet extends HttpServlet{
             url = "/Account_activity.jsp";
             message = "Transfer was successful";          
         }
-        
-        //Try running app with below sessions not set (in theory the sessions have already been set
-        /*session.setAttribute("user" , user);
-        Account account = AccountDB.selectChecking(user.getUserName(), "Checking");
-        session.setAttribute("checking", account);
-        Account account2 = AccountDB.selectSavings(user.getUserName(), "Savings");
-        session.setAttribute("savings", account2);*/
-         
+               
         getServletContext()
             .getRequestDispatcher(url)
             .forward(request, response); 

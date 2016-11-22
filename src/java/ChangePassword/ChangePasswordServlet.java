@@ -1,5 +1,7 @@
 package ChangePassword;
 
+import Account.Account;
+import Data.AccountDB;
 import Data.UserDB;
 import User.User;
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class ChangePasswordServlet extends HttpServlet {
         HttpSession session = request.getSession();
         //Getting user from session
         User user = (User) session.getAttribute("user");
+
         //If user doesn't exist, create one
         if(user == null)
         {
@@ -54,6 +57,11 @@ public class ChangePasswordServlet extends HttpServlet {
             UserDB.update(user);
         }
         
+        Account checking = AccountDB.selectChecking(user.getUserName(), "Checking");
+        session.setAttribute("checking", checking);
+        Account savings = AccountDB.selectSavings(user.getUserName(), "Savings");
+        session.setAttribute("savings", savings); 
+                
         //Error message to be displayed if needed
         request.setAttribute("message", message);
 
