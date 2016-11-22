@@ -18,47 +18,23 @@
         <p><i>Not logged in</i></p>
     </c:otherwise>
 </c:choose>
-        
         <table>
             <tr>
-               <th>Description</th>
-               <th>Amount</th>
-               <th>Balance</th>
+                <th>Account</th>
+                <th>Balance</th>
             </tr>
             <tr>
-                <td>McDonalds, Tampa</td>
-                <td>$7.99</td>
-                <td>$1099.99</td>
+                <td>${checking.type}</td>
+                <td>$${checking.balance}0</td>
             </tr>
             <tr>
-                <td>Target, Brandon</td>
-                <td>$17.99</td>
-                <td>$1099.99</td>
-            </tr>
-            <tr>
-                <td>Home Depot, Tampa</td>
-                <td>$102.99</td>
-                <td>$1099.99</td>
-            </tr>
-            <tr>
-                <td>Publix, Tampa</td>
-                <td>$107.99</td>
-                <td>$1099.99</td>
-            </tr>
-            <tr>
-                <td>SPC, Clearwater</td>
-                <td>$745.55</td>
-                <td>$1099.99</td>
-            </tr>
-            
+                <td>${savings.type}</td>
+                <td>$${savings.balance}0</td>
+            </tr>  
         </table>
         
         <p><br>*Table above is a place holder until we get data<br></p>
-        <!--<span>First Name: ${user.firstName}<br></span>
-<span>Last Name: ${user.lastName}<br></span>
-<span>Email: ${user.email}<br></span>
-<span>Phone: ${user.phone}<br><br></span>
-</p>-->
+       
   <div class="clear">
   
   </div>

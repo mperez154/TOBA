@@ -16,8 +16,7 @@ public class ChangePasswordServlet extends HttpServlet {
      @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
-        
+        doPost(request, response);       
     }
     
     @Override
@@ -63,9 +62,6 @@ public class ChangePasswordServlet extends HttpServlet {
         
         getServletContext()
             .getRequestDispatcher(url)
-            .forward(request, response);
-        
-        
-    }
-    
+            .forward(request, response);    
+    }   
 }

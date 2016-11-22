@@ -15,22 +15,25 @@ public class Account implements Serializable {
     private double balance; //Balance
     private String userID;
     
+    //No arg constructor
     public Account(){
         type = "";
         balance = 0.00;
     }
     
+    //Preferred constructor
     public Account(double initBalance, String accountType, String userID){
         balance = initBalance;
         type = accountType;
-        this.userID = userID;
-        
+        this.userID = userID;      
     }
     
+    //Credit method
     public void credit(double deposit){
         balance = balance + deposit;        
     }
     
+    //Debit method
     public void debit(double charges)
     {
         balance = balance - charges;
@@ -41,13 +44,19 @@ public class Account implements Serializable {
         this.type = type;
     }
     
+    //Setter to set the Balance
     public void setBalance(double balance)
     {
         this.balance = balance;
     }
     
-    
-    
-    
-    
+    //Getter to get the account Type
+    public String getType() {
+        return type;
+    }
+
+    //Getter to get the account balance
+    public double getBalance() {
+        return balance;
+    }  
 } 

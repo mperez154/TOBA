@@ -31,19 +31,44 @@ public class AccountDB {
         }
     }
     
-    public static Account selectAccount(String userID)
+     public static void update(Account account)
+    {
+        //Create connection using the connection pool
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        
+        try
+        {
+            em.merge(account);
+            trans.commit();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+            trans.rollback();
+        }
+        finally
+        {
+            em.close();
+        }
+    }
+       
+    public static Account selectChecking(String userID, String checking)
     {
         //Create connection using the connection pool
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT a FROM Account a " +
-                        "WHERE a.userID = :userID";
+                        "WHERE a.userID = :userID " +
+                        "AND a.type = :checking";
         TypedQuery<Account> q = em.createQuery(qString, Account.class);
         q.setParameter("userID", userID);
-        
+        q.setParameter("checking", checking);
+         
         try
         {
-            Account user = q.getSingleResult();
-            return user;
+            Account account = q.getSingleResult();
+            return account;
         }
         catch(NoResultException e)
         {
@@ -55,4 +80,29 @@ public class AccountDB {
         }
     }
     
+    public static Account selectSavings(String userID, String savings)
+    {
+        //Create connection using the connection pool
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT a FROM Account a " +
+                        "WHERE a.userID = :userID " +
+                        "AND a.type = :savings";
+        TypedQuery<Account> q = em.createQuery(qString, Account.class);
+        q.setParameter("userID", userID);
+        q.setParameter("savings", savings);
+         
+        try
+        {
+            Account account = q.getSingleResult();
+            return account;
+        }
+        catch(NoResultException e)
+        {
+            return null;
+        }
+        finally
+        {
+            em.close();
+        }
+    }   
 }

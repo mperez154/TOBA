@@ -13,34 +13,15 @@ import javax.servlet.http.HttpSession;
 
 import Data.UserDB;
 
-/**
- * @author Marco
- */
 @WebServlet(urlPatterns = {"/NewCustomerServlet"})
 public class NewCustomerServlet extends HttpServlet {   
     
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
-        
+        doPost(request, response);       
     }
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -86,8 +67,7 @@ public class NewCustomerServlet extends HttpServlet {
             UserDB.insert(user);
             //Annonomoysly creating two new accounts
             AccountDB.insert(new Account(10.00, "Checking", userName));
-            AccountDB.insert(new Account(25.00, "Savings", userName));
-            
+            AccountDB.insert(new Account(25.00, "Savings", userName));           
         }
         
         session.setAttribute("user", user);
