@@ -14,6 +14,14 @@ public class Account implements Serializable {
     private String type;    //Checking or Savings
     private double balance; //Balance
     private String userID;
+
+    public String getType() {
+        return type;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
     
     public Account(){
         type = "";

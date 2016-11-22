@@ -101,8 +101,37 @@ public class UserDB
         }
     }
     
+    public static User selectUsers(String userName)
+    {
+        //Create connection using the connection pool
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM User u " +
+                        "WHERE u.userName = :userName";
+        TypedQuery<User> q = em.createQuery(qString, User.class);
+        q.setParameter("userName", userName);
+        
+        try
+        {
+            User user = q.getSingleResult();
+            return user;
+        }
+        catch(NoResultException e)
+        {
+            return null;
+        }
+        finally
+        {
+            em.close();
+        }
+    }
+    
     public static boolean emailExists(String email){
         User u = selectUser(email);
+        return u != null;
+    }
+    
+    public static boolean userExists(String user){
+        User u = selectUsers(user);
         return u != null;
     }
     

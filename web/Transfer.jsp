@@ -11,9 +11,36 @@
 <main>
 <h2>Transfer Options</h2>
 
-<form method="post" action="Account_activity">
-<label for="Savings">From:</label><input type="text" name="from" id="from" value="${userName}">
-<label for="Checking">To:</label><input type="text" name="To" value="${password}" id="To">
+ <table>
+            <tr>
+                <th>Account</th>
+                <th>Balance</th>
+            </tr>
+            <tr>
+                <td>${account.type}</td>
+                <td>$${account.balance}0</td>
+            </tr>
+            <tr>
+                <td>${account2.type}</td>
+                <td>$${account2.balance}0</td>
+            </tr>  
+        </table>
+            
+            <br><br>
+
+            <p id="errorMessage"><i>${message}</i></p>
+<form method="post" action="Transfer">
+    <label for="From">From:</label>
+    <select type="text" name="from" id="from">
+        <option value="Savings">Savings</option>
+        <option value="Checking">Checking</option>
+    </select><br><br>
+    <label for="to">To:</label>
+    <select type="text" name="to" id="to" ">
+        <option value="Savings">Savings</option>
+        <option value="Checking">Checking</option>
+    </select><br><br>
+    <label for="amount">Amount:</label><input type="amount" name="amount" id="amount"></input>
 <label><input type="submit" id="transfer" name="transfer" value="Transfer"></label>
 </form>
 
