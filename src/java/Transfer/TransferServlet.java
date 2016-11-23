@@ -62,7 +62,7 @@ public class TransferServlet extends HttpServlet{
             url = "/Account_activity.jsp";
             message = "Transfer was successful";          
         }
-               
+         
         getServletContext()
             .getRequestDispatcher(url)
             .forward(request, response); 

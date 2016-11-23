@@ -1,5 +1,7 @@
 package User;
 
+import Account.Account;
+import Data.AccountDB;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -138,4 +140,10 @@ public class User implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }   
+    
+    public double getCheckingBalance()
+    {
+        Account checking = AccountDB.selectChecking(userName, email);
+        return checking.getBalance();
+    }
 }
