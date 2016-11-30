@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Data.AccountDB;
+import Data.TransferDB;
+import TransferClass.Transfer;
 
 @WebServlet(urlPatterns = {"/TransferServlet"})
 public class TransferServlet extends HttpServlet{
@@ -37,6 +39,8 @@ public class TransferServlet extends HttpServlet{
         User user = (User) session.getAttribute("user");
         Account checking = (Account) session.getAttribute("checking");
         Account savings = (Account) session.getAttribute("savings");
+        Transfer transfer = new Transfer();
+        
         
         if(from == null || from.isEmpty() || to == null || to.isEmpty() || amount == null || amount.isEmpty())
         {
@@ -50,15 +54,24 @@ public class TransferServlet extends HttpServlet{
             {
                 checking.credit(Double.parseDouble(amount));
                 savings.debit(Double.parseDouble(amount));
+                transfer.setAmount(Double.parseDouble(amount));
+                transfer.setFrom(from);
+                transfer.setToAccount(to);
+                transfer.setUser(user);
             }
             else
             {
                 savings.credit(Double.parseDouble(amount));
                 checking.debit(Double.parseDouble(amount));
+                transfer.setAmount(Double.parseDouble(amount));
+                transfer.setFrom(from);
+                transfer.setToAccount(to);
+                transfer.setUser(user);
             }
                                  
             AccountDB.update(checking);
             AccountDB.update(savings);
+            TransferDB.insert(transfer);
             url = "/Account_activity.jsp";
             message = "Transfer was successful";          
         }

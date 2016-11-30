@@ -2,9 +2,12 @@ package Login;
 
 import Account.Account;
 import Data.AccountDB;
+import Data.TransferDB;
 import Data.UserDB;
+import TransferClass.Transfer;
 import User.User;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -51,17 +54,25 @@ public class LoginServlet extends HttpServlet {
 //            //Direct to login_failure page if either username or password is incorrect
 //            url = "/Login_failure.jsp";          
 //        }
+
+
+        
         
         if(UserDB.userExists(userName)){
             User dbUser = UserDB.selectUsers(userName);
             if(password.equals(dbUser.getPassword()))
             {
+                
                 url = "/Account_activity.jsp";          
                 session.setAttribute("user" , dbUser);
                 Account checking = AccountDB.selectChecking(userName, "Checking");
                 session.setAttribute("checking", checking);
                 Account savings = AccountDB.selectSavings(userName, "Savings");
-                session.setAttribute("savings", savings);              
+                session.setAttribute("savings", savings); 
+                
+                List<Transfer> allTransfers = TransferDB.selectAllTransactions(userName);
+                //session.setAttribute("allTransfers", allTransfers);
+                
             }         
         }
         else {

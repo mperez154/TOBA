@@ -32,6 +32,21 @@
                 <td>$${savings.balance}0</td>
             </tr>  
         </table>
+            
+        <table>
+            <tr>
+                <th>Account</th>
+                <th>Balance</th>
+            </tr>
+            <tr>
+                <td>${checking.type}</td>
+                <td>$${checking.balance}0</td>
+            </tr>
+            <tr>
+                <td>${savings.type}</td>
+                <td>$${savings.balance}0</td>
+            </tr>  
+        </table>
         
         <p><br>*Table above is a place holder until we get data<br></p>
        
