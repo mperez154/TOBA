@@ -23,6 +23,7 @@ public class User implements Serializable{
     private String city;
     private String state;
     private String zip;  
+    private String salt;
 
     //Here is the no arg-constructor
     public User() {
@@ -36,10 +37,11 @@ public class User implements Serializable{
         zip = "";
         userName = "";
         password = "";
+        salt = "";
               
     }
     
-    public User(String firstName, String lastName, String email, String phone, String address, String city, String state, String zip, String userName, String password){
+    public User(String firstName, String lastName, String email, String phone, String address, String city, String state, String zip, String userName, String password, String salt){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -140,6 +142,14 @@ public class User implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }   
+    
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
     
     public double getCheckingBalance()
     {

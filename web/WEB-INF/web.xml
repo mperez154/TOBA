@@ -44,6 +44,10 @@
         <servlet-name>TransferServlet</servlet-name>
         <servlet-class>Transfer.TransferServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportsServlet</servlet-name>
+        <servlet-class>Reports.ReportsServlet</servlet-class>
+    </servlet>
     <!--SERVLET MAPPINGS-->
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -60,6 +64,10 @@
     <servlet-mapping>
         <servlet-name>TransferServlet</servlet-name>
         <url-pattern>/Transfer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportsServlet</servlet-name>
+        <url-pattern>/Download</url-pattern>
     </servlet-mapping>
     <!--WELCOME FILE LIST-->
     <welcome-file-list>

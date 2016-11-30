@@ -43,6 +43,7 @@ public class NewCustomerServlet extends HttpServlet {
         String zip = request.getParameter("zip");
         String userName = lName + zip;
         String password = "welcome1";
+        String tempPassword = "welcome1";
         
         //Variables for hashing/salting password
         String hashedPassword = "";
@@ -61,7 +62,7 @@ public class NewCustomerServlet extends HttpServlet {
         }
         
         //Creating a user object
-        User user = new User(fName, lName, eMail, phone, address, city, state, zip, userName, password);
+        User user = new User(fName, lName, eMail, phone, address, city, state, zip, userName, password, salt);
         
         if(UserDB.emailExists(eMail)){
             message="This email address already exists.<br>" +
@@ -85,6 +86,7 @@ public class NewCustomerServlet extends HttpServlet {
             
             //Update user password before storing in DB
             user.setPassword(saltedAndHashedPassword);
+            user.setSalt(salt);
             
             //Insert user into User DB
             UserDB.insert(user);
@@ -93,6 +95,7 @@ public class NewCustomerServlet extends HttpServlet {
             AccountDB.insert(new Account(10.00, "Checking", userName));
             AccountDB.insert(new Account(25.00, "Savings", userName));           
         }
+        user.setPassword(tempPassword); //Set user password in session to tempPassword (unhashed)
         
         session.setAttribute("user", user);
         
@@ -105,6 +108,7 @@ public class NewCustomerServlet extends HttpServlet {
         request.setAttribute("city", city);
         request.setAttribute("state", state);
         request.setAttribute("zip", zip);
+
         
         //Set request attribute for password
         request.setAttribute("hashedPassword", hashedPassword);
