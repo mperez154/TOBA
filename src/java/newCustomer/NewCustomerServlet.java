@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Data.UserDB;
+import PWUtil.PasswordUtil;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet(urlPatterns = {"/NewCustomerServlet"})
 public class NewCustomerServlet extends HttpServlet {   
@@ -42,6 +44,11 @@ public class NewCustomerServlet extends HttpServlet {
         String userName = lName + zip;
         String password = "welcome1";
         
+        //Variables for hashing/salting password
+        String hashedPassword = "";
+        String salt = "";
+        String saltedAndHashedPassword = "";
+        
         String message = "";
         
         if(fName == null || fName.isEmpty() || lName == null || lName.isEmpty() || eMail == null || eMail.isEmpty()
@@ -64,7 +71,24 @@ public class NewCustomerServlet extends HttpServlet {
         else {
             message = ""; 
             url = "/Success.jsp";
+            
+            //Hash and salt the password before inserting into DB
+            try{
+                hashedPassword = PasswordUtil.hashPassword(password);
+                salt = PasswordUtil.getSalt();
+                saltedAndHashedPassword = PasswordUtil.hashAndSaltPassword(password);
+                                
+            } catch(NoSuchAlgorithmException ex){
+                hashedPassword = ex.getMessage();
+                saltedAndHashedPassword = ex.getMessage();
+            }      
+            
+            //Update user password before storing in DB
+            user.setPassword(saltedAndHashedPassword);
+            
+            //Insert user into User DB
             UserDB.insert(user);
+            
             //Annonomoysly creating two new accounts
             AccountDB.insert(new Account(10.00, "Checking", userName));
             AccountDB.insert(new Account(25.00, "Savings", userName));           
@@ -81,6 +105,12 @@ public class NewCustomerServlet extends HttpServlet {
         request.setAttribute("city", city);
         request.setAttribute("state", state);
         request.setAttribute("zip", zip);
+        
+        //Set request attribute for password
+        request.setAttribute("hashedPassword", hashedPassword);
+        request.setAttribute("salt", salt);
+        request.setAttribute("saltedAndHashedPassword", saltedAndHashedPassword);
+        
         
         getServletContext()
             .getRequestDispatcher(url)

@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         //Getting user from session
         User user = (User) session.getAttribute("user");
-        //If user doesn't exist, create one
+        //If user doesn't exist, send to new customer page
         if(user == null)
         {
             url = "/new_customer.jsp"; 
@@ -55,9 +55,6 @@ public class LoginServlet extends HttpServlet {
 //            url = "/Login_failure.jsp";          
 //        }
 
-
-        
-        
         if(UserDB.userExists(userName)){
             User dbUser = UserDB.selectUsers(userName);
             if(password.equals(dbUser.getPassword()))
