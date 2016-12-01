@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Base64;
 
 public class PasswordUtil {
+        
     public static String hashPassword(String password)
             throws NoSuchAlgorithmException {        
         MessageDigest md = MessageDigest.getInstance("SHA-256");

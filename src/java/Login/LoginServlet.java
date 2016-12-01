@@ -4,9 +4,11 @@ import Account.Account;
 import Data.AccountDB;
 import Data.TransferDB;
 import Data.UserDB;
+import PWUtil.PasswordUtil;
 import TransferClass.Transfer;
 import User.User;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,46 +33,22 @@ public class LoginServlet extends HttpServlet {
         
         //Getting a session
         HttpSession session = request.getSession();
-        //Getting user from session
-        User user = (User) session.getAttribute("user");
-        //If user doesn't exist, send to new customer page
-        if(user == null)
-        {
-            url = "/new_customer.jsp"; 
-        }
              
          //Get password from the form        
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-        
-//        if(user != null && userName.equals(user.getUserName()) && password.equals(user.getPassword()))
-//        {
-//            //Direct to account activity page if username and password are correct...
-//            url = "/Account_activity.jsp";   
-//            //UserDB.selectUsers(userName);
-//        }
-//        else
-//        {
-//            //Direct to login_failure page if either username or password is incorrect
-//            url = "/Login_failure.jsp";          
-//        }
 
         if(UserDB.userExists(userName)){
+            //Create instance of User
             User dbUser = UserDB.selectUsers(userName);
-            if(password.equals(dbUser.getPassword()))
-            {
+            session.setAttribute("user" , dbUser);
+            Account checking = AccountDB.selectChecking(userName, "Checking");
+            session.setAttribute("checking", checking);
+            Account savings = AccountDB.selectSavings(userName, "Savings");
+            session.setAttribute("savings", savings); 
                 
-                url = "/Account_activity.jsp";          
-                session.setAttribute("user" , dbUser);
-                Account checking = AccountDB.selectChecking(userName, "Checking");
-                session.setAttribute("checking", checking);
-                Account savings = AccountDB.selectSavings(userName, "Savings");
-                session.setAttribute("savings", savings); 
-                
-                List<Transfer> allTransfers = TransferDB.selectAllTransactions(userName);
-                //session.setAttribute("allTransfers", allTransfers);
-                
-            }         
+            //List<Transfer> allTransfers = TransferDB.selectAllTransactions(userName);
+            //session.setAttribute("allTransfers", allTransfers);               
         }
         else {
             url = "/Login_failure.jsp";            

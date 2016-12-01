@@ -1,6 +1,7 @@
 package Data;
 
 import User.User;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -123,6 +124,28 @@ public class UserDB
         {
             em.close();
         }
+    }
+    
+    public static List<User> selectAllUsers()
+    {
+        //Create connection using the connection pool
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM User u ";
+        TypedQuery<User> q = em.createQuery(qString, User.class);
+        
+        List<User> allUsers;
+        
+        try
+        {
+            allUsers = q.getResultList();
+            if(allUsers == null || allUsers.isEmpty())
+                allUsers = null;
+        }
+        finally
+        {
+            em.close();
+        }
+        return allUsers;
     }
     
     public static boolean emailExists(String email){

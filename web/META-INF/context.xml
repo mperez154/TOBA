@@ -8,7 +8,10 @@
         logAbandoned="true" removeAbandoned="true"
         removeAbandonedTimeout="60" type="javax.sql.DataSource" />
     <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
-        dataSourceName="jdbc/user_db" localDataSource="true"
+        driverName="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/users_db"
+        conectionName="root" connectionPassword="Bulldogs25"
+        dataSourceName="jdbc/users_db" localDataSource="true"
         userTable="userpass" userNameCol="Username" userCredCol="Password"
         userRoleTable="userrole" roleNameCol="Rolename"/>
         
