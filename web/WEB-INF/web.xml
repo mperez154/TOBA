@@ -17,6 +17,7 @@
         </web-resource-collection>
             <!--Authorize admins to connect -->
             <auth-constraint>
+                <role-name>service</role-name>
                 <role-name>admin</role-name>
             </auth-constraint>
     </security-constraint>
@@ -27,6 +28,16 @@
             <form-error-page>/admin/login_error.html</form-error-page>
         </form-login-config>
     </login-config>
+    <!--FILTER DEFINITIONS-->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>Filters.LoginFilter</filter-class>
+    </filter>
+    <!--FILTER MAPPINGS-->
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <servlet-name>LoginServlet</servlet-name>
+    </filter-mapping>
     <!--SERVLET DEFINITIONS-->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>

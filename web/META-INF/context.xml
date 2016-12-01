@@ -8,7 +8,7 @@
         logAbandoned="true" removeAbandoned="true"
         removeAbandonedTimeout="60" type="javax.sql.DataSource" />
     <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
-        dataSourceName="jdbc/user_db" localDataSource="true"
+        dataSourceName="jdbc/users_db" localDataSource="true"
         userTable="userpass" userNameCol="Username" userCredCol="Password"
         userRoleTable="userrole" roleNameCol="Rolename"/>
         

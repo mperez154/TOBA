@@ -1,12 +1,16 @@
 package Reports;
 
 import Data.ConnectionPool;
+import Data.UserDB;
+import User.User;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Iterator;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,37 +34,20 @@ public class ReportsServlet extends HttpServlet {
         row.createCell(0).setCellValue("The User Table");
         
         try{
-            ConnectionPool pool = ConnectionPool.getInstance();
-            Connection connection = pool.getConnection();
-            Statement statement = connection.createStatement();
-            String query = "SELECT * FROM user ORDER BY lastname";
-            ResultSet results = statement.executeQuery(query);
-            
-            //Enter data into spreadsheet
+            List resultsFromQuery = UserDB.selectAllUsers();
             int i = 2;
-            while(results.next()){
-                row = sheet.createRow(i);
-                row.createCell(0).setCellValue(results.getInt("username"));
-                row.createCell(1).setCellValue(results.getInt("address"));
-                row.createCell(2).setCellValue(results.getInt("city"));
-                row.createCell(3).setCellValue(results.getInt("email"));
-                row.createCell(4).setCellValue(results.getInt("firstname"));
-                row.createCell(5).setCellValue(results.getInt("lastname"));
-                row.createCell(6).setCellValue(results.getInt("password"));
-                row.createCell(7).setCellValue(results.getInt("phone"));
-                row.createCell(8).setCellValue(results.getInt("salt"));
-                row.createCell(9).setCellValue(results.getInt("state"));
-                row.createCell(10).setCellValue(results.getInt("zip"));
-                i++;
-            }
-            results.close();
-            statement.close();
-            connection.close();         
+            Iterator<User> iterator = resultsFromQuery.iterator();
+		while (iterator.hasNext()) {
+			//System.out.println(iterator.next().getUserName());
+                        row = sheet.createRow(i);
+                        row.createCell(0).setCellValue(iterator.next().getUserName());                   
+                        i++;
+		}      
         }
-        catch(SQLException e)
+        catch(Exception e)
         {
             this.log(e.toString());
-            System.out.println("Didn't Work");
+            System.out.println("Msg 1029: Unable to complete request");
         }
         
         //set the response headers
