@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
         
 public class TransferDB {
     
@@ -76,22 +77,25 @@ public class TransferDB {
             em.close();
         }
     } 
-    
-    public static List<Transfer> selectAllTransactions(String userName)
+    public static List<Transfer> selectAllTransfers()
     {
+        //Create connection using the connection pool
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        List<Transfer> transferObject = (List<Transfer>)em.createQuery("SELECT c from Transfer c").getResultList();
-        System.out.println("List of all transfers:");
-        Iterator i = transferObject.iterator();
-        Transfer test2;
-        while(i.hasNext())
+        String qString = "SELECT t FROM Transfer t ";
+        TypedQuery<Transfer> q = em.createQuery(qString, Transfer.class);
+        
+        List<Transfer> allTransfers;
+        
+        try
         {
-            test2 = (Transfer) i.next();
-            System.out.print(test2.getAmount() + "\t\t");
-            System.out.print(test2.getFrom() + "\t\t");
-            System.out.print(test2.getToAccount() + "\t\t");
-            System.out.println(test2.getUser().getUserName());   
+            allTransfers = q.getResultList();
+            if(allTransfers == null || allTransfers.isEmpty())
+                allTransfers = null;
         }
-        return transferObject;
-    }    
+        finally
+        {
+            em.close();
+        }
+        return allTransfers;
+    }
 }

@@ -21,36 +21,37 @@
         <table>
             <tr>
                 <th>Account</th>
-                <th>Balance</th>
+                <th>Current Balance</th>
             </tr>
             <tr>
                 <td>${checking.type}</td>
-                <td>$${checking.balance}0</td>
+                <td>$${checking.balance}</td>
             </tr>
             <tr>
                 <td>${savings.type}</td>
-                <td>$${savings.balance}0</td>
+                <td>$${savings.balance}</td>
             </tr>  
         </table>
             <br>
-            <H3>This will eventually hold transaction info</h3>
+            <H3>Recent Transactions</h3>
+        <c:if test="${show}">  
         <table>
-            <tr>
-                <th>Account</th>
-                <th>Balance</th>
-            </tr>
-            <tr>
-                <td>${checking.type}</td>
-                <td>$${checking.balance}0</td>
-            </tr>
-            <tr>
-                <td>${savings.type}</td>
-                <td>$${savings.balance}0</td>
-            </tr>  
+            <tr>               
+                <th>From Account</th>
+                <th>To Account</th>
+                <th>Amount</th>
+                
+            </tr>        
+             <c:forEach items="${allTransfers}" var="transfer">
+                 <tr>
+                     <td>${transfer.getFrom()}</td>
+                     <td>${transfer.getToAccount()}</td>
+                     <td>$${transfer.getAmount()}</td> 
+                 </tr>
+             </c:forEach>            
         </table>
-        
-        <p><br>*Table above is a place holder until we get data<br></p>
-       
+</c:if>
+               
   <div class="clear">
   
   </div>

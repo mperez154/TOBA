@@ -9,6 +9,7 @@ import TransferClass.Transfer;
 import User.User;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,6 +53,26 @@ public class LoginServlet extends HttpServlet {
         }
         else {
             url = "/Login_failure.jsp";            
+        }
+        
+        try{
+            //Retrieve users from DB
+            List resultsFromQuery = TransferDB.selectAllTransfers();         
+            
+            //Create an arrayList of all Users
+            ArrayList<Transfer> allTransfers = new ArrayList<>();
+            allTransfers.addAll(resultsFromQuery);
+                  
+            boolean show = true;
+            //Set all attributes
+            session.setAttribute("allTransfers", allTransfers);
+            session.setAttribute("show", show);
+            
+        }
+        catch(Exception e)
+        {
+            this.log(e.toString());
+            System.out.println("Msg 1029: Unable to complete request");
         }
         
         getServletContext()
