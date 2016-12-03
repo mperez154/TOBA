@@ -34,7 +34,6 @@
         </table>
             <br>
             <H3>This will eventually hold transaction info</h3>
-            <p><a href="Download">Download Spreadsheet Report</a></p>
         <table>
             <tr>
                 <th>Account</th>
