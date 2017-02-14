@@ -7,12 +7,10 @@
         maxActive="100" maxIdle="30" maxWait="10000"
         logAbandoned="true" removeAbandoned="true"
         removeAbandonedTimeout="60" type="javax.sql.DataSource" />
-    <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
+    <Realm className="org.apache.catalina.realm.JDBCRealm" debug="99"
         driverName="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://localhost:3306/users_db"
+        connectionURL="jdbc:mysql://localhost:3306/users_db?user=root&amp;password=Bulldogs25"
         conectionName="root" connectionPassword="Bulldogs25"
-        dataSourceName="jdbc/users_db" localDataSource="true"
         userTable="userpass" userNameCol="Username" userCredCol="Password"
         userRoleTable="userrole" roleNameCol="Rolename"/>
-        
 </Context>
