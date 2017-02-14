@@ -15,11 +15,11 @@
             <web-resource-name>Protected Area</web-resource-name>
             <url-pattern>/admin/*</url-pattern>
         </web-resource-collection>
-            <!--Authorize admins to connect -->
-            <auth-constraint>
-                <role-name>service</role-name>
-                <role-name>admin</role-name>
-            </auth-constraint>
+        <!--Authorize admins to connect -->
+        <auth-constraint>
+            <role-name>service</role-name>
+            <role-name>admin</role-name>
+        </auth-constraint>
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
@@ -60,6 +60,11 @@
         <servlet-class>Reports.ReportsServlet</servlet-class>
     </servlet>
     <!--SERVLET MAPPINGS-->
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Account_activity</url-pattern>
@@ -81,7 +86,12 @@
         <url-pattern>/Download</url-pattern>
     </servlet-mapping>
     <!--WELCOME FILE LIST-->
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
         <welcome-file>index.jsp</welcome-file>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>

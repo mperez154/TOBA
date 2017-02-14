@@ -1,5 +1,5 @@
 header, nav, main, footer { display: block; }
-body { background-color: #FFCC33;
+body { background-color: #ec6b00;
       
       color: #666666;
 	  font-family: Verdana, Arial, sans-serif;
@@ -40,7 +40,7 @@ nav ul { list-style-type: none;
        margin: 0;
        padding-left: 0; 
 }
-h2 { color: #FFCC33;
+h2 { color: #ec6b00;
     font-family: Georgia, serif;
 }
 dt { color: #000033;
@@ -74,12 +74,11 @@ main ul { list-style-position: inside; }
 #mobile { display: none; }
 #desktop { display: inline; }
 
-
 table
 {
 	margin: auto;
 	width: 90%;
-	border: 1px solid #FFCC33;
+	border: 1px solid #ec6b00;
 	border-collapse: collapse;
 	
 }
@@ -88,7 +87,7 @@ td, th
 {
 	padding: 5px;
         padding-left: 10px;
-	border: 1px solid #FFCC33;
+	border: 1px solid #ec6b00;
         text-align: left;
 }
 
@@ -97,8 +96,6 @@ td
 	text-align: left;
 	
 }
-
-
 
 .text
 {

@@ -1,30 +1,17 @@
+<%@page contentType="text/html" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="http://localhost:8084/TOBA/includes/header.html" />
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>REPORT PAGE</h1>
-        <p><a href="Download">Download Spreadsheet Report</a></p>
+<div id="wrapper">
+<header><h1>Titan Online Banking Application</h1></header>
+
+<c:import url="/includes/navigation2.html" />
+
+<main>
+    <h2>NEW REGISTRATIONS REPORT</h2>
+        <p><a href="http://localhost:8084/TOBA/Download">Download Report (Excel)</a></p>
         <br>
-        <h3>Recent registrations</h3>
-         <table>
-            <tr>
-                <th>User</th>
-                <th>Date</th>
-            </tr>
-            <tr>
-                <td>jdoe</td>
-                <td>11/29/16</td>
-            </tr>
-            <tr>
-                <td>mperez</td>
-                <td>11/28/16</td>
-            </tr>  
-        </table>
-            
-    </body>
-</html>
+         
+<div class="clear"></div>
+</main>
+<c:import url="/includes/footer.jsp" />
