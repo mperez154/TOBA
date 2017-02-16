@@ -10,7 +10,8 @@ import javax.persistence.Id;
 public class Account implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int AccountNumber;
     private String type;    //Checking or Savings
     private double balance; //Balance
     private String userID;
@@ -22,10 +23,12 @@ public class Account implements Serializable {
     }
     
     //Preferred constructor
-    public Account(double initBalance, String accountType, String userID){
-        balance = initBalance;
+    public Account(String accountType, String userID){
+        balance = (int)(Math.random() * 10000) + 20;
         type = accountType;
-        this.userID = userID;      
+        this.userID = userID; 
+        //Generate random account number
+        AccountNumber = (int)(Math.random() * 100000000) + 20;
     }
     
     //Credit method
@@ -66,5 +69,13 @@ public class Account implements Serializable {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+    
+    public int getAccountNumber() {
+        return AccountNumber;
+    }
+
+    public void setAccountNumber(int AccountNumber) {
+        this.AccountNumber = AccountNumber;
     }
 } 

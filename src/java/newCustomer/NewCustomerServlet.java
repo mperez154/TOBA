@@ -41,7 +41,7 @@ public class NewCustomerServlet extends HttpServlet {
         String city = request.getParameter("city");
         String state = request.getParameter("state");
         String zip = request.getParameter("zip");
-        String userName = lName + zip;
+        String userName = fName.substring(0,1) + lName + (int)(Math.random() * 100);
         String password = "welcome1";
         String tempPassword = "welcome1";
         
@@ -92,8 +92,8 @@ public class NewCustomerServlet extends HttpServlet {
             UserDB.insert(user);
             
             //Annonomoysly creating two new accounts
-            AccountDB.insert(new Account(10.00, "Checking", userName));
-            AccountDB.insert(new Account(25.00, "Savings", userName));           
+            AccountDB.insert(new Account("Checking", userName));
+            AccountDB.insert(new Account("Savings", userName));           
         }
         user.setPassword(tempPassword); //Set user password in session to tempPassword (unhashed)
         
