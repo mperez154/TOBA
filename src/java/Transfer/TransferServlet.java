@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import Data.AccountDB;
 import Data.TransferDB;
 import TransferClass.Transfer;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(urlPatterns = {"/TransferServlet"})
 public class TransferServlet extends HttpServlet{
@@ -74,6 +76,26 @@ public class TransferServlet extends HttpServlet{
             TransferDB.insert(transfer);
             url = "/Account_activity.jsp";
             message = "Transfer was successful";          
+        }
+        
+        try{
+            //Retrieve users from DB
+            List resultsFromQuery = TransferDB.selectAllTransfers();         
+            
+            //Create an arrayList of all Users
+            ArrayList<Transfer> allTransfers = new ArrayList<>();
+            allTransfers.addAll(resultsFromQuery);
+                  
+            boolean show = true;
+            //Set all attributes
+            session.setAttribute("allTransfers", allTransfers);
+            session.setAttribute("show", show);
+            
+        }
+        catch(Exception e)
+        {
+            this.log(e.toString());
+            System.out.println("Msg 1029: Unable to complete request");
         }
          
         getServletContext()
