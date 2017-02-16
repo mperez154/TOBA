@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="utf-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:import url="/includes/header.html" /> 
 
  
@@ -29,13 +30,13 @@
              </tr> 
              <tr> 
                  <td>${checking.type}</td> 
-                 <td>${checking.AccountNumber}</td>
-                 <td>$${checking.balance}</td> 
+                 <td>${checking.accountNumber}</td>
+                 <td><fmt:setLocale value="en_US"/><fmt:formatNumber value="${checking.balance}" type="currency"/></td> 
              </tr> 
              <tr> 
                  <td>${savings.type}</td> 
-                 <td>${savings.AccountNumber}</td>
-                 <td>$${savings.balance}</td> 
+                 <td>${savings.accountNumber}</td>
+                 <td><fmt:setLocale value="en_US"/><fmt:formatNumber value="${savings.balance}" type="currency"/></td> 
              </tr>   
          </table> 
              <br> 
@@ -52,7 +53,7 @@
                   <tr> 
                       <td>${transfer.getFrom()}</td> 
                       <td>${transfer.getToAccount()}</td> 
-                      <td>$${transfer.getAmount()}</td>  
+                      <td><fmt:setLocale value="en_US"/><fmt:formatNumber value="${transfer.getAmount()}" type="currency"/></td>
                   </tr> 
               </c:forEach>             
          </table> 

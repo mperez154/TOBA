@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
         
 public class TransferDB {
     
@@ -93,5 +94,27 @@ public class TransferDB {
             System.out.println(test2.getUser().getUserName());   
         }
         return transferObject;
-    }    
+    }  
+    
+    public static List<Transfer> selectAllTransfers() 
+     { 
+         //Create connection using the connection pool 
+         EntityManager em = DBUtil.getEmFactory().createEntityManager(); 
+         String qString = "SELECT t FROM Transfer t "; 
+         TypedQuery<Transfer> q = em.createQuery(qString, Transfer.class); 
+          
+         List<Transfer> allTransfers; 
+          
+         try 
+         { 
+             allTransfers = q.getResultList(); 
+             if(allTransfers == null || allTransfers.isEmpty()) 
+                 allTransfers = null; 
+         } 
+         finally 
+         { 
+             em.close(); 
+         } 
+         return allTransfers; 
+     } 
 }

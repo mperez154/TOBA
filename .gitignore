@@ -1,3 +1,6 @@
 /dist/
 /nbproject/private/
 /build/
+/web/META-INF/
+/web/WEB-INF/
+/web/includes/

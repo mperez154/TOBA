@@ -11,7 +11,7 @@ public class Account implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int AccountNumber;
+    private int accountNumber;
     private String type;    //Checking or Savings
     private double balance; //Balance
     private String userID;
@@ -20,6 +20,7 @@ public class Account implements Serializable {
     public Account(){
         type = "";
         balance = 0.00;
+        accountNumber = 0;
     }
     
     //Preferred constructor
@@ -28,7 +29,7 @@ public class Account implements Serializable {
         type = accountType;
         this.userID = userID; 
         //Generate random account number
-        AccountNumber = (int)(Math.random() * 100000000) + 20;
+        accountNumber = (int)(Math.random() * 100000000) + 20;
     }
     
     //Credit method
@@ -72,10 +73,10 @@ public class Account implements Serializable {
     }
     
     public int getAccountNumber() {
-        return AccountNumber;
+        return accountNumber;
     }
 
-    public void setAccountNumber(int AccountNumber) {
-        this.AccountNumber = AccountNumber;
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 } 

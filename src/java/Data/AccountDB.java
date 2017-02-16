@@ -37,7 +37,6 @@ public class AccountDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
-        System.out.println(account.getAccountNumber());
         
         try
         {
