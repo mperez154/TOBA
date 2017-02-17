@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import Data.AccountDB;
 import Data.TransferDB;
 import TransferClass.Transfer;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/TransferServlet"})
@@ -39,6 +39,7 @@ public class TransferServlet extends HttpServlet{
         String to = request.getParameter("to");
         String amount = request.getParameter("amount");
         User user = (User) session.getAttribute("user");
+        Date date = new Date();
         Account checking = (Account) session.getAttribute("checking");
         Account savings = (Account) session.getAttribute("savings");
         Transfer transfer = new Transfer();
@@ -60,6 +61,7 @@ public class TransferServlet extends HttpServlet{
                 transfer.setFrom(from);
                 transfer.setToAccount(to);
                 transfer.setUser(user);
+                transfer.setDate((int) new Date().getTime()/1000);
             }
             else
             {
@@ -69,6 +71,7 @@ public class TransferServlet extends HttpServlet{
                 transfer.setFrom(from);
                 transfer.setToAccount(to);
                 transfer.setUser(user);
+                transfer.setDate((int) new Date().getTime()/1000);
             }
                                  
             AccountDB.update(checking);

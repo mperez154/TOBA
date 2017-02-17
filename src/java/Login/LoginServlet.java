@@ -57,7 +57,7 @@ package Login;
           
          try{ 
              //Retrieve users from DB 
-             List resultsFromQuery = TransferDB.selectAllTransfers();          
+             List resultsFromQuery = TransferDB.selectAllTransactions();          
               
              //Create an arrayList of all Users 
              ArrayList<Transfer> allTransfers = new ArrayList<>(); 

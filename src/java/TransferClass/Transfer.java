@@ -7,6 +7,7 @@ package TransferClass;
 
 import User.User;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,9 @@ import javax.persistence.Id;
 public class Transfer implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)     
+    @GeneratedValue(strategy = GenerationType.AUTO)   
+    private int transactionID;
+    private int date;
     private String fromAccount;
     private String toAccount;
     private Double amount; 
@@ -30,6 +33,7 @@ public class Transfer implements Serializable {
        fromAccount = "";
        toAccount = "";
        amount = 0.00;
+       this.transactionID = (int)(Math.random() * 1000000000);
     }
     
     public Transfer(String from, String to, Double amount, User user)
@@ -38,6 +42,7 @@ public class Transfer implements Serializable {
         this.toAccount = to;
         this.amount = amount;
         this.userAccount = user;
+        this.transactionID = (int)(Math.random() * 1000000000);
     }
     
     //ALL SETTERS AND GETTERS BELOW
@@ -74,5 +79,34 @@ public class Transfer implements Serializable {
         this.userAccount = user;
     }
     
-      
+      public int getTransactionID() {
+        return transactionID;
+    }
+
+    public void setTransactionID(int transactionID) {
+        this.transactionID = transactionID;
+    }
+
+    public String getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(String fromAccount) {
+        this.fromAccount = fromAccount;
+    }
+
+    public User getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(User userAccount) {
+        this.userAccount = userAccount;
+    }
+     public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
+    }
 }

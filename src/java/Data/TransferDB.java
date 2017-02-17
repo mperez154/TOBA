@@ -78,10 +78,10 @@ public class TransferDB {
         }
     } 
     
-    public static List<Transfer> selectAllTransactions(String userName)
+    public static List<Transfer> selectAllTransactions()
     {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        List<Transfer> transferObject = (List<Transfer>)em.createQuery("SELECT c from Transfer c").getResultList();
+        List<Transfer> transferObject = (List<Transfer>)em.createQuery("SELECT c from Transfer c ").getResultList();
         System.out.println("List of all transfers:");
         Iterator i = transferObject.iterator();
         Transfer test2;
@@ -100,7 +100,7 @@ public class TransferDB {
      { 
          //Create connection using the connection pool 
          EntityManager em = DBUtil.getEmFactory().createEntityManager(); 
-         String qString = "SELECT t FROM Transfer t "; 
+         String qString = "SELECT t FROM Transfer t " ;  
          TypedQuery<Transfer> q = em.createQuery(qString, Transfer.class); 
           
          List<Transfer> allTransfers; 
