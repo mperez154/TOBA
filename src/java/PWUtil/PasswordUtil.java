@@ -38,6 +38,11 @@ public class PasswordUtil {
         return hashPassword(password + salt);
     }
     
+    public static String hashAndSaltPassword(String password, String salt)
+            throws NoSuchAlgorithmException {
+        return hashPassword(password + salt);
+    }
+    
     public static void checkPasswordStrength(String password) throws Exception {
         if (password == null || password.trim().isEmpty()) {
             throw new Exception("Password cannot be empty.");
@@ -69,7 +74,7 @@ public class PasswordUtil {
                     + hashAndSaltPassword("sesame"));            
         } catch (NoSuchAlgorithmException ex) {
             System.out.println(ex);
-        }
+    }
         
         try {
             checkPasswordStrength("sesame1776");

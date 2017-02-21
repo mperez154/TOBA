@@ -8,7 +8,7 @@ package Login;
  import TransferClass.Transfer; 
  import User.User; 
  import java.io.IOException; 
- import java.security.NoSuchAlgorithmException; 
+import java.security.NoSuchAlgorithmException;
  import java.util.ArrayList; 
  import java.util.List; 
  import javax.servlet.ServletException; 
@@ -31,6 +31,7 @@ package Login;
              throws ServletException, IOException { 
           
          String url = "/Account_activity.jsp"; 
+         String saltedAndHashedPassword = "";
           
          //Getting a session 
          HttpSession session = request.getSession(); 
@@ -42,24 +43,34 @@ package Login;
          if(UserDB.userExists(userName)){ 
              //Create instance of User 
              User dbUser = UserDB.selectUsers(userName); 
+             //Add line to validate password
+              try{
+                String salt = dbUser.getSalt();
+                saltedAndHashedPassword = PasswordUtil.hashAndSaltPassword(password, salt);
+                                
+            } catch(NoSuchAlgorithmException ex){
+                System.out.println(ex.getMessage());
+            }   
+             if(dbUser.getPassword().equals(saltedAndHashedPassword))
+             {
+                 url = "/Account_activity.jsp";
+             }
+             else url = "/Login_failure.jsp";
              session.setAttribute("user" , dbUser); 
              Account checking = AccountDB.selectChecking(userName, "Checking"); 
              session.setAttribute("checking", checking); 
              Account savings = AccountDB.selectSavings(userName, "Savings"); 
              session.setAttribute("savings", savings);  
-                  
-             //List<Transfer> allTransfers = TransferDB.selectAllTransactions(userName); 
-             //session.setAttribute("allTransfers", allTransfers);                
-         } 
+            } 
          else { 
              url = "/Login_failure.jsp";             
          } 
           
          try{ 
-             //Retrieve users from DB 
+             //Retrieve transactions from DB 
              List resultsFromQuery = TransferDB.selectAllTransactions();          
               
-             //Create an arrayList of all Users 
+             //Create an arrayList of all Transactions 
              ArrayList<Transfer> allTransfers = new ArrayList<>(); 
              allTransfers.addAll(resultsFromQuery); 
                     

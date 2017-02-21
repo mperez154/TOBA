@@ -3,8 +3,10 @@ package ChangePassword;
 import Account.Account;
 import Data.AccountDB;
 import Data.UserDB;
+import PWUtil.PasswordUtil;
 import User.User;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,11 +29,14 @@ public class ChangePasswordServlet extends HttpServlet {
         
         String url = "/Account_activity.jsp";
         String message = "";
+        String salt = "";
+        String saltedAndHashedPassword = "";
+        String userName = request.getParameter("userName");
         
         //Getting a session
         HttpSession session = request.getSession();
         //Getting user from session
-        User user = (User) session.getAttribute("user");
+        User user = (User) UserDB.selectUsers(userName);
 
         //If user doesn't exist, create one
         if(user == null)
@@ -53,13 +58,25 @@ public class ChangePasswordServlet extends HttpServlet {
         //Change the password on the user object
         if(user != null)
         {
-            user.setPassword(password);
+            
+             try{
+                salt = PasswordUtil.getSalt();
+                saltedAndHashedPassword = PasswordUtil.hashAndSaltPassword(password, salt);
+                                
+            } catch(NoSuchAlgorithmException ex){
+                System.out.println(ex.getMessage());
+            }      
+            
+            //Update user password before storing in DB
+            user.setPassword(saltedAndHashedPassword);
+            user.setSalt(salt);
+            
             UserDB.update(user);
         }
         
-        Account checking = AccountDB.selectChecking(user.getUserName(), "Checking");
+        Account checking = AccountDB.selectChecking(userName, "Checking");
         session.setAttribute("checking", checking);
-        Account savings = AccountDB.selectSavings(user.getUserName(), "Savings");
+        Account savings = AccountDB.selectSavings(userName, "Savings");
         session.setAttribute("savings", savings); 
                 
         //Error message to be displayed if needed

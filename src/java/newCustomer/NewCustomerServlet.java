@@ -75,9 +75,8 @@ public class NewCustomerServlet extends HttpServlet {
             
             //Hash and salt the password before inserting into DB
             try{
-                hashedPassword = PasswordUtil.hashPassword(password);
                 salt = PasswordUtil.getSalt();
-                saltedAndHashedPassword = PasswordUtil.hashAndSaltPassword(password);
+                saltedAndHashedPassword = PasswordUtil.hashAndSaltPassword(password, salt);
                                 
             } catch(NoSuchAlgorithmException ex){
                 hashedPassword = ex.getMessage();
